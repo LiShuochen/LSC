@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>你的产品名称</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        system-ui, -system-ui, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      backdrop-filter: blur(20px);
+      background-color: rgba(245, 245, 247, 0.8);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .nav-left {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .hero {
+      max-width: 980px;
+      margin: 3rem auto 2rem;
+      padding: 3.5rem 1.5rem;
+      border-radius: 32px;
+      background: radial-gradient(circle at top, #ffffff, #f5f5f7);
+      text-align: center;
+    }
+
+    .hero-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #6e6e73;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #6e6e73;
+      max-width: 26rem;
+      margin: 0 auto 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 0.95rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background-color 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn-primary {
+      background-color: #0071e3;
+      border-color: #0071e3;
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0, 113, 227, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 113, 227, 0.4);
+    }
+
+    .btn-ghost {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #0071e3;
+    }
+
+    .btn-ghost:hover {
+      background-color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .hero-mock {
+      margin: 0 auto;
+      margin-top: 1rem;
+      max-width: 480px;
+      aspect-ratio: 16 / 10;
+      border-radius: 26px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: linear-gradient(135deg, #ffffff, #f0f4ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #6e6e73;
+    }
+
+    .section {
+      max-width: 980px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6e6e73;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #6e6e73;
+    }
+
+    footer {
+      max-width: 980px;
+      margin: 0 auto 2rem;
+      padding: 1.5rem 1.5rem 0;
+      font-size: 0.75rem;
+      color: #86868b;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      .nav-links {
+        display: none; /* 简化：移动端直接隐藏导航链接，可自己改成菜单按钮 */
+      }
+
+      .hero {
+        margin-top: 1.8rem;
+        padding: 2.5rem 1.25rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding-inline: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-left">Brand</div>
+      <nav class="nav-links">
+        <a href="#">产品</a>
+        <a href="#">功能</a>
+        <a href="#">价格</a>
+        <a href="#">支持</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero 区域 -->
+    <section class="hero">
+      <div class="hero-label">新一代</div>
+      <h1 class="hero-title">你的产品名称</h1>
+      <p class="hero-subtitle">
+        用一句简短的话描述你的产品价值。清晰、直接，有一点点情绪，但不过度营销。
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary">了解更多</button>
+        <button class="btn-ghost">立即体验</button>
+      </div>
+
+      <div class="hero-mock">
+        在这里放一张产品截图或插画
+      </div>
+    </section>
+
+    <!-- 特性/模块 区域 -->
+    <section class="section">
+      <h2 class="section-title">三行文字讲清它为什么好用</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-label">亮点一</div>
+          <h3 class="card-title">简洁直观的界面</h3>
+          <p class="card-text">
+            用一小段话说明这个亮点。比如操作简单，上手快，用户几秒就能搞懂。
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-label">亮点二</div>
+          <h3 class="card-title">强大的功能能力</h3>
+          <p class="card-text">
+            很短的描述，比如自动化、省时间、帮你减少重复劳动之类。
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-label">亮点三</div>
+          <h3 class="card-title">自然融入你的工作流</h3>
+          <p class="card-text">
+            描述它如何与现有工具配合、跨设备使用、或者团队协作等。
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 你的公司名称。保留所有权利。</p>
+  </footer>
+</body>
+</html>
