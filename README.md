@@ -1,2 +1,2 @@
 # LSC
-Lsc test project
+Lsc .com  project
